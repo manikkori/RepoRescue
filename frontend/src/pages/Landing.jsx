@@ -53,7 +53,7 @@ export function Landing() {
           </div>
           <div className="flex items-center gap-3 sm:gap-6">
             <a
-              href="https://github.com/manikkori"
+              href="https://github.com/manikkori/repoRescue"
               target="_blank"
               rel="noreferrer"
               className="text-sm font-medium text-gray-400 hover:text-white transition-colors flex items-center gap-2 p-2 sm:p-0"
