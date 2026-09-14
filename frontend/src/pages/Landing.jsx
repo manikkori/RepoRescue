@@ -209,6 +209,34 @@ export function Landing() {
           </Card>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="relative z-10 border-t border-white/5 bg-[#09090b]/80 backdrop-blur-md py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div className="flex items-center gap-2 font-bold text-sm tracking-tight text-gray-300">
+            <img
+              src="/image.png"
+              alt="RepoRescue Logo"
+              className="w-5 h-5 bg-blue-300/80 p-0.5 rounded shadow-sm shadow-blue-500/20 object-contain"
+            />
+            RepoRescue
+          </div>
+          <p className="text-gray-500 text-xs">
+            &copy; {new Date().getFullYear()} RepoRescue. All rights reserved.
+          </p>
+          <div className="flex items-center gap-4">
+            <a
+              href="https://github.com/manikkori"
+              target="_blank"
+              rel="noreferrer"
+              className="text-gray-500 hover:text-white transition-colors text-xs flex items-center gap-1.5"
+            >
+              <GithubIcon className="w-3.5 h-3.5" />
+              GitHub
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
