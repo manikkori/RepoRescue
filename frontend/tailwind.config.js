@@ -12,7 +12,7 @@ export default {
         devAccent: "#3b82f6", // Bright Blue for buttons/links
       },
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+        sans: ['"Source Sans Pro"', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       backgroundImage: {
