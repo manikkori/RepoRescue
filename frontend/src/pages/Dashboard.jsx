@@ -8,7 +8,8 @@ import {
   GitBranch,
   ArrowLeft,
   Zap,
-  Cpu
+  Cpu,
+  FileText
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { investigateBug } from "../services/api";
