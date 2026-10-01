@@ -9,8 +9,6 @@ import {
   ShieldCheck,
   FileText,
   ChevronRight,
-  Github,
-  Activity,
 } from "lucide-react";
 import {
   UserButton,
