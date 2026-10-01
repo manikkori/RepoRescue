@@ -11,6 +11,10 @@ export default {
         devMuted: "#a1a1aa", // Gray text for secondary info
         devAccent: "#3b82f6", // Bright Blue for buttons/links
       },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      },
       backgroundImage: {
         "grid-pattern":
           "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0V0zm1 1h38v38H1V1z' fill='%2327272a' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E\")",
