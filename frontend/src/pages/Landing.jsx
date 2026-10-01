@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 import {
   Activity,
   Zap,
-  ShieldCheck,
-  TerminalSquare,
-  ArrowRight,
   Code2,
+  Terminal,
+  Menu,
+  FileText,
+  CheckCircle,
+  Users
 } from "lucide-react";
-import { Card } from "../components/ui/Card";
-import { Button } from "../components/ui/Button";
 import {
   SignedIn,
   SignedOut,
@@ -17,226 +17,172 @@ import {
   UserButton,
 } from "@clerk/clerk-react";
 
-const GithubIcon = ({ className }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-    <path d="M9 18c-4.51 2-5-2-7-2" />
-  </svg>
-);
-
 export function Landing() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-[#09090b] text-[#f4f4f5] selection:bg-blue-500/30 font-sans overflow-x-hidden relative">
-      <div className="fixed inset-0 z-0 bg-[url('https://res.cloudinary.com/dntjnq39e/image/upload/v1703144869/grid_ptq1m1.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-20 pointer-events-none"></div>
-      <div className="absolute top-0 md:top-[-20%] left-1/2 -translate-x-1/2 w-[120%] md:w-[800px] h-[300px] md:h-[500px] bg-blue-600/20 blur-[100px] md:blur-[150px] rounded-full pointer-events-none"></div>
+    <div className="min-h-screen bg-[#6c747f] p-4 md:p-8 lg:p-12 font-sans selection:bg-teal-500/30 flex items-center justify-center">
+      {/* Main Container */}
+      <div className="w-full max-w-[1400px] min-h-[calc(100vh-6rem)] bg-[#11141d] rounded-2xl md:rounded-[2rem] overflow-hidden flex flex-col relative shadow-2xl text-white">
+        
+        {/* Ambient Glows */}
+        <div className="absolute top-[20%] left-[10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-teal-500/10 blur-[100px] md:blur-[150px] rounded-full pointer-events-none"></div>
+        <div className="absolute bottom-[10%] right-[5%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-blue-500/10 blur-[100px] md:blur-[150px] rounded-full pointer-events-none"></div>
 
-      <nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-[#09090b]/80 backdrop-blur-xl transition-all">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex justify-between items-center">
-          <div className="flex items-center gap-2 font-bold text-lg md:text-xl tracking-tight">
+        {/* Top Navigation */}
+        <nav className="grid grid-cols-1 lg:grid-cols-12 border-b border-white/[0.08] relative z-20 bg-[#11141d]/50 backdrop-blur-md">
+          {/* Logo */}
+          <div className="lg:col-span-3 border-b lg:border-b-0 lg:border-r border-white/[0.08] flex items-center px-6 lg:px-8 py-5 gap-3">
             <img
               src="/image.png"
               alt="RepoRescue Logo"
-              className="w-8 h-8 md:w-10 md:h-10 bg-blue-300/80 p-1 rounded-lg shadow-lg shadow-blue-500/20 object-contain"
+              className="w-8 h-8 rounded object-contain bg-white/10 p-1"
             />
-            RepoRescue
+            <span className="font-semibold text-lg tracking-wide text-gray-200">RepoRescue</span>
           </div>
-          <div className="flex items-center gap-3 sm:gap-6">
-            <a
-              href="https://github.com/manikkori/repoRescue"
-              target="_blank"
-              rel="noreferrer"
-              className="text-sm font-medium text-gray-400 hover:text-white transition-colors flex items-center gap-2 p-2 sm:p-0"
-            >
-              <GithubIcon className="w-5 h-5 sm:w-4 sm:h-4" />
-              <span className="hidden sm:inline">Source Code</span>
-            </a>
 
+          {/* Links */}
+          <div className="lg:col-span-6 border-b lg:border-b-0 lg:border-r border-white/[0.08] flex items-center px-6 lg:px-8 py-4 lg:py-5 gap-8 lg:gap-12 text-sm text-gray-400">
+            <a href="https://github.com/manikkori" className="flex items-center gap-2 hover:text-white transition-colors">
+              <Menu className="w-4 h-4" /> Menu
+            </a>
+            <a href="#" className="flex items-center gap-2 hover:text-white transition-colors">
+              <FileText className="w-4 h-4" /> Docs
+            </a>
+          </div>
+
+          {/* Actions */}
+          <div className="lg:col-span-3 flex items-center justify-start lg:justify-end px-6 lg:px-8 py-4 lg:py-5">
             <SignedOut>
               <SignInButton mode="modal">
-                <Button className="!px-3 sm:!px-4 !py-1.5 sm:!py-2 !text-xs sm:!text-sm !rounded-md shadow-lg shadow-blue-500/20">
-                  Sign In
-                </Button>
+                <button className="px-6 py-2.5 rounded-lg bg-gradient-to-b from-white/10 to-white/5 border border-white/10 hover:bg-white/10 transition-all text-sm font-medium shadow-lg">
+                  Try Now
+                </button>
               </SignInButton>
             </SignedOut>
-
             <SignedIn>
-              <Button
-                onClick={() => navigate("/dashboard")}
-                className="!px-3 sm:!px-4 !py-1.5 sm:!py-2 !text-xs sm:!text-sm !rounded-md shadow-lg shadow-blue-500/20"
-              >
-                Dashboard
-              </Button>
-              <UserButton
-                appearance={{
-                  elements: { userButtonAvatarBox: "w-8 h-8 md:w-9 md:h-9" },
-                }}
-              />
+              <div className="flex items-center gap-4">
+                <button 
+                  onClick={() => navigate("/dashboard")}
+                  className="px-6 py-2.5 rounded-lg bg-gradient-to-b from-white/10 to-white/5 border border-white/10 hover:bg-white/10 transition-all text-sm font-medium shadow-lg"
+                >
+                  Dashboard
+                </button>
+                <UserButton appearance={{ elements: { userButtonAvatarBox: "w-8 h-8" } }} />
+              </div>
             </SignedIn>
           </div>
-        </div>
-      </nav>
+        </nav>
 
-      <main className="relative z-10 pt-28 md:pt-32 pb-16 md:pb-20 px-4 sm:px-6 max-w-7xl mx-auto text-center flex flex-col items-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-6 md:mb-8 animate-fade-in scale-90 md:scale-100">
-          <span className="flex h-2 w-2 relative">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-          </span>
-          <span className="text-[10px] md:text-xs font-medium text-gray-300 uppercase tracking-widest">
-            RepoRescue Agent is Online
-          </span>
-        </div>
-
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter leading-[1.1] mb-6 max-w-4xl bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-500">
-          Ship faster. We'll handle <br className="hidden sm:block" />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500">
-            the crash logs.
-          </span>
-        </h1>
-
-        <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl leading-relaxed mb-8 md:mb-10 px-2">
-          Paste your production error logs and GitHub repo. Our AI autonomously
-          clones, reads, and debugs your codebase in seconds.
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-center gap-3 w-full justify-center px-4 sm:px-0">
-          <Button
-            onClick={() => navigate("/dashboard")}
-            className="w-full sm:w-auto px-6 md:px-8 py-3.5 md:py-4 text-sm md:text-base font-semibold shadow-[0_0_30px_rgba(59,130,246,0.3)] hover:shadow-[0_0_40px_rgba(59,130,246,0.5)]"
-          >
-            Start Debugging <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-        </div>
-
-        <div className="w-full max-w-4xl mt-12 md:mt-20 relative animate-fade-in group">
-          <div className="absolute -inset-1 md:-inset-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl blur opacity-20 md:opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
-          <div className="relative rounded-xl border border-white/10 bg-[#0f0f11] shadow-2xl overflow-hidden text-left">
-            <div className="flex items-center px-3 md:px-4 py-2.5 md:py-3 border-b border-white/5 bg-white/[0.02]">
-              <div className="flex gap-1.5 md:gap-2">
-                <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-red-500/80"></div>
-                <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-yellow-500/80"></div>
-                <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-green-500/80"></div>
-              </div>
-              <div className="mx-auto text-[10px] md:text-xs font-mono text-gray-500">
-                agent-trace.log
-              </div>
-            </div>
-            <div className="p-4 md:p-6 font-mono text-xs sm:text-sm md:text-base space-y-3 md:space-y-4 overflow-x-auto">
-              <div className="text-gray-400 whitespace-nowrap">
-                <span className="text-blue-500">❯</span> Initializing RepoRescue
-                autonomous agent...
-              </div>
-              <div className="text-gray-300 whitespace-nowrap">
-                <span className="text-blue-500">❯</span> Fetching repo:{" "}
-                <span className="text-white">github.com/manikkori/app</span>
-              </div>
-              <div className="text-red-400 whitespace-nowrap">
-                <span className="text-red-500">✖</span> Error detected:
-                ReferenceError: express is not defined
-              </div>
-              <div className="text-gray-400 whitespace-nowrap">
-                <span className="text-blue-500">❯</span> Scanning
-                architecture... 6 files analyzed.
-              </div>
-              <div className="text-green-400 flex items-start gap-2 min-w-max">
-                <span className="text-green-500 mt-1">✔</span>
-                <div>
-                  Root cause found in{" "}
-                  <span className="text-white">src/index.js</span> <br />
-                  <span className="text-gray-500 text-[10px] md:text-xs mt-1 block">
-                    Agent generated fix: Added `const express =
-                    require('express');`
-                  </span>
+        {/* Hero Section */}
+        <main className="flex-1 relative flex flex-col justify-between p-6 md:p-12 lg:p-16 z-10">
+           
+           {/* Top Right Floating Card */}
+           <div className="self-end w-full max-w-sm p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-md shadow-2xl mb-12 lg:mb-0 mt-4 lg:mt-0">
+              <h3 className="text-lg md:text-xl leading-relaxed text-gray-200 mb-8 font-medium">
+                Automated debugging & <br className="hidden md:block" /> fixing across React, <br className="hidden md:block" /> Node, Python & more
+              </h3>
+              <div className="flex items-center justify-between mt-4">
+                <div className="flex items-center">
+                  <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-[#1e2330] flex items-center justify-center border-2 border-[#11141d] z-30">
+                    <Code2 className="w-3.5 h-3.5 md:w-4 md:h-4 text-gray-300" />
+                  </div>
+                  <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-[#1e2330] flex items-center justify-center -ml-3 border-2 border-[#11141d] z-20">
+                    <Terminal className="w-3.5 h-3.5 md:w-4 md:h-4 text-gray-300" />
+                  </div>
+                  <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-[#1e2330] flex items-center justify-center -ml-3 border-2 border-[#11141d] z-10">
+                    <Activity className="w-3.5 h-3.5 md:w-4 md:h-4 text-gray-300" />
+                  </div>
+                  <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-white/10 flex items-center justify-center -ml-3 border-2 border-[#11141d] z-0">
+                    <span className="text-[10px] text-gray-300 font-medium">+</span>
+                  </div>
                 </div>
+                <p className="text-[9px] md:text-[10px] text-gray-500 max-w-[120px] leading-tight text-right">
+                  Ultra-fast execution with advanced AI models
+                </p>
               </div>
+           </div>
+
+           {/* Bottom Content Area */}
+           <div className="mt-auto flex flex-col lg:flex-row items-end justify-between gap-12 w-full pt-12 md:pt-24 lg:pt-32">
+              
+              {/* Left Side: Headline */}
+              <div className="max-w-3xl w-full">
+                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[10px] md:text-[11px] text-gray-400 mb-6 uppercase tracking-wider font-medium">
+                   <Zap className="w-3 h-3 md:w-3.5 md:h-3.5 text-teal-500" />
+                   RepoRescue — speed advantage!
+                 </div>
+                 <h1 className="text-4xl md:text-5xl lg:text-[4.5rem] font-medium leading-[1.1] tracking-tight text-white mb-6 lg:mb-0">
+                   Leading AI-powered <br />
+                   debugging and <br />
+                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-teal-700/60 drop-shadow-sm">
+                     error resolution
+                   </span>
+                 </h1>
+              </div>
+
+              {/* Right Side: Description and CTA */}
+              <div className="max-w-sm space-y-6 lg:pb-4 w-full">
+                 <p className="text-sm text-gray-400 leading-relaxed">
+                   Elevate your shipping speed! Debug <strong className="text-white font-medium">fast</strong> and <strong className="text-white font-medium">confidently</strong> with AI-driven root cause analysis. Your ultimate <strong className="text-white font-medium">debugging</strong> companion awaits.
+                 </p>
+                 <button 
+                   onClick={() => navigate("/dashboard")}
+                   className="px-6 py-3 rounded-xl bg-white/[0.08] border border-white/10 hover:bg-white/[0.12] transition-all text-sm font-medium w-full sm:w-auto shadow-lg backdrop-blur-md"
+                 >
+                   Try the Dashboard
+                 </button>
+              </div>
+           </div>
+
+        </main>
+
+        {/* Stats Section */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-white/[0.08] bg-[#090b0f] relative z-20">
+          
+          <div className="p-8 md:p-10 border-b lg:border-b-0 lg:border-r border-white/[0.08] flex flex-col justify-between min-h-[160px] group hover:bg-white/[0.02] transition-colors">
+            <div className="flex items-center gap-4">
+              <div className="p-2.5 rounded-full bg-white/[0.03] border border-white/[0.08]">
+                <Activity className="w-4 h-4 md:w-5 md:h-5 text-gray-400 group-hover:text-teal-400 transition-colors" />
+              </div>
+              <p className="text-xs md:text-sm text-gray-500 leading-snug w-24">Lines of code analyzed</p>
             </div>
+            <div className="text-2xl md:text-3xl font-medium mt-8 text-gray-100">10M+</div>
           </div>
-        </div>
-      </main>
 
-      <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pb-20 md:pb-32">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 pt-12 md:pt-16 border-t border-white/5">
-          <Card className="bg-white/[0.02] border-white/5 hover:border-blue-500/30 hover:bg-white/[0.04] transition-all duration-300 p-6 md:p-8">
-            <div className="w-10 h-10 md:w-12 md:h-12 mb-4 md:mb-6 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 border border-blue-500/20">
-              <Zap className="w-5 h-5 md:w-6 md:h-6" />
+          <div className="p-8 md:p-10 border-b lg:border-b-0 lg:border-r border-white/[0.08] flex flex-col justify-between min-h-[160px] group hover:bg-white/[0.02] transition-colors">
+             <div className="flex items-center gap-4">
+              <div className="p-2.5 rounded-full bg-white/[0.03] border border-white/[0.08]">
+                <Zap className="w-4 h-4 md:w-5 md:h-5 text-gray-400 group-hover:text-teal-400 transition-colors" />
+              </div>
+              <p className="text-xs md:text-sm text-gray-500 leading-snug w-24">Speed of resolution</p>
             </div>
-            <h3 className="text-lg md:text-xl font-semibold text-white mb-2 md:mb-3">
-              Lightning Fast Fixes
-            </h3>
-            <p className="text-gray-400 text-xs md:text-sm leading-relaxed">
-              Our AI reads your error logs the second you paste them. No waiting
-              around—get the exact solution you need instantly.
-            </p>
-          </Card>
-
-          <Card className="bg-white/[0.02] border-white/5 hover:border-blue-500/30 hover:bg-white/[0.04] transition-all duration-300 p-6 md:p-8">
-            <div className="w-10 h-10 md:w-12 md:h-12 mb-4 md:mb-6 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 border border-blue-500/20">
-              <Code2 className="w-5 h-5 md:w-6 md:h-6" />
-            </div>
-            <h3 className="text-lg md:text-xl font-semibold text-white mb-2 md:mb-3">
-              Reads Your Actual Code
-            </h3>
-            <p className="text-gray-400 text-xs md:text-sm leading-relaxed">
-              It doesn't just guess blindly. The AI connects to your GitHub,
-              looks at your specific files, and finds out exactly where the
-              mistake is.
-            </p>
-          </Card>
-
-          <Card className="bg-white/[0.02] border-white/5 hover:border-blue-500/30 hover:bg-white/[0.04] transition-all duration-300 p-6 md:p-8">
-            <div className="w-10 h-10 md:w-12 md:h-12 mb-4 md:mb-6 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 border border-blue-500/20">
-              <ShieldCheck className="w-5 h-5 md:w-6 md:h-6" />
-            </div>
-            <h3 className="text-lg md:text-xl font-semibold text-white mb-2 md:mb-3">
-              Paste Any Error Log
-            </h3>
-            <p className="text-gray-400 text-xs md:text-sm leading-relaxed">
-              Whether your app crashed on Vercel, Render, AWS, or your own
-              computer, just copy the raw text and paste it here. We'll handle
-              the rest.
-            </p>
-          </Card>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="relative z-10 border-t border-white/5 bg-[#09090b]/80 backdrop-blur-md py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <div className="flex items-center gap-2 font-bold text-sm tracking-tight text-gray-300">
-            <img
-              src="/image.png"
-              alt="RepoRescue Logo"
-              className="w-5 h-5 bg-blue-300/80 p-0.5 rounded shadow-sm shadow-blue-500/20 object-contain"
-            />
-            RepoRescue
+            <div className="text-2xl md:text-3xl font-medium mt-8 text-gray-100">&lt;5 sec</div>
           </div>
-          <p className="text-gray-500 text-xs">
-            &copy; {new Date().getFullYear()} RepoRescue. All rights reserved.
-          </p>
-          <div className="flex items-center gap-4">
-            <a
-              href="https://github.com/manikkori"
-              target="_blank"
-              rel="noreferrer"
-              className="text-gray-500 hover:text-white transition-colors text-xs flex items-center gap-1.5"
-            >
-              <GithubIcon className="w-3.5 h-3.5" />
-              GitHub
-            </a>
+
+          <div className="p-8 md:p-10 border-b sm:border-b-0 lg:border-r border-white/[0.08] flex flex-col justify-between min-h-[160px] group hover:bg-white/[0.02] transition-colors">
+             <div className="flex items-center gap-4">
+              <div className="p-2.5 rounded-full bg-white/[0.03] border border-white/[0.08]">
+                <Users className="w-4 h-4 md:w-5 md:h-5 text-gray-400 group-hover:text-teal-400 transition-colors" />
+              </div>
+              <p className="text-xs md:text-sm text-gray-500 leading-snug w-24">Users trust RepoRescue</p>
+            </div>
+            <div className="text-2xl md:text-3xl font-medium mt-8 text-gray-100">10,000+</div>
           </div>
+
+          <div className="p-8 md:p-10 flex flex-col justify-between min-h-[160px] group hover:bg-white/[0.02] transition-colors">
+             <div className="flex items-center gap-4">
+              <div className="p-2.5 rounded-full bg-white/[0.03] border border-white/[0.08]">
+                <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-gray-400 group-hover:text-teal-400 transition-colors" />
+              </div>
+              <p className="text-xs md:text-sm text-gray-500 leading-snug w-24">Successful fixes with AI</p>
+            </div>
+            <div className="text-2xl md:text-3xl font-medium mt-8 text-gray-100">98%</div>
+          </div>
+
         </div>
-      </footer>
+
+      </div>
     </div>
   );
 }
