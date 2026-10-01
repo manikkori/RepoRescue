@@ -104,7 +104,7 @@ export function Landing() {
           </div>
 
           {/* Bottom Content Area */}
-          <div className="mt-auto flex flex-col lg:flex-row items-end justify-between gap-12 w-full pt-12 md:pt-24 lg:pt-32">
+          <div className="mt-auto flex flex-col lg:flex-row items-end justify-between gap-12 w-full pt-12 md:pt-20 lg:pt-24 pb-8 md:pb-16 lg:pb-20">
             
             {/* Left Side: Headline */}
             <div className="max-w-4xl w-full">
