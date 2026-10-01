@@ -43,12 +43,12 @@ export function Landing() {
 
         {/* Links */}
         <div className="lg:col-span-6 border-b lg:border-b-0 lg:border-r border-white/[0.08] flex items-center px-6 lg:px-8 py-4 lg:py-5 gap-8 lg:gap-12 text-sm text-gray-400">
-          <a href="https://github.com/manikkori" className="flex items-center gap-2 hover:text-white transition-colors">
+          <a href="https://github.com/manikkori" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-white transition-colors">
             <Menu className="w-4 h-4" /> Source Code
           </a>
-          <a href="#" className="flex items-center gap-2 hover:text-white transition-colors">
+          <button onClick={() => navigate("/docs")} className="flex items-center gap-2 hover:text-white transition-colors cursor-pointer">
             <FileText className="w-4 h-4" /> Documentation
-          </a>
+          </button>
         </div>
 
         {/* Actions */}
