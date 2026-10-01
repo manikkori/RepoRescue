@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-devBg text-devText font-sans antialiased min-h-screen bg-grid-pattern;
+  @apply bg-devBg text-devText font-sans min-h-screen bg-grid-pattern;
 }
 
 ::-webkit-scrollbar {

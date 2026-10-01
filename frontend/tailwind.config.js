@@ -12,8 +12,8 @@ export default {
         devAccent: "#3b82f6", // Bright Blue for buttons/links
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
       },
       backgroundImage: {
         "grid-pattern":
