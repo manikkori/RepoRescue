@@ -54,7 +54,7 @@ VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key_here
 Follow these steps to get the project running on your local machine.
 
 ### 1. Clone the repository
-git clone https://github.com/manikkori/traceroot.git
+git clone https://github.com/manikkori/repoRescue.git
 cd traceroot
 
 ### 2. Setup the Backend
