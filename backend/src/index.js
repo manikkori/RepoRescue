@@ -12,11 +12,11 @@ app.use(express.json());
 app.use("/api/investigate", investigateRoute);
 
 app.get("/health", (req, res) => {
-  res.json({ status: "ok", message: "TraceRoot Backend is running smoothly." });
+  res.json({ status: "ok", message: "repoRescue Backend is running smoothly." });
 });
 
 app.listen(PORT, () => {
   console.log(
-    `🚀 TraceRoot Backend Engine started on http://localhost:${PORT}`,
+    `🚀 repoRescue Backend Engine started on http://localhost:${PORT}`,
   );
 });
