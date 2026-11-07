@@ -12,7 +12,7 @@ app.use(express.json());
 app.use("/api/investigate", investigateRoute);
 
 app.get("/health", (req, res) => {
-  res.json({ status: "ok", message: "repoRescue Backend is running smoothly." });
+  res.json({ status: "ok", message: "repoRescue is runninggggg!!!!." });
 });
 
 app.listen(PORT, () => {
